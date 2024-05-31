@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: [:edit, :show, :destroy]
+  before_action :set_prototype, only: [:edit, :show, :update, :destroy]
   before_action :check_owner, only: [:edit, :destroy] 
   before_action :move_to_index, only: [:new, :edit, :destroy]
 
@@ -25,7 +25,6 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    @prototype = Prototype.find(params[:id])
     if @prototype.update(prototype_params)
       redirect_to @prototype
     else
